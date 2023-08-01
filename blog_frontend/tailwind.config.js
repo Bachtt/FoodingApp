@@ -28,6 +28,9 @@ export default {
         darkStroke: "#3A3A43",
         darkRed: "#422C32",
       },
+      backgroundImage: {
+        "food-bg": "url('./assets/images/food-bg.jpg')",
+      },
     },
   },
   plugins: [],

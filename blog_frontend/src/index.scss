@@ -4,7 +4,10 @@
 
 @layer base{
     body{
-        @apply font-primary text-base;
+        @apply font-primary text-base font-normal;
+    }
+    input{
+        @apply outline-none;
     }
 }
 
