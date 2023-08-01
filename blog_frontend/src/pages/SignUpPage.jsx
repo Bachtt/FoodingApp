@@ -1,14 +1,15 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import * as yup from "yup";
 import { Button } from "../components/button";
+import { Checkbox } from "../components/checkbox";
 import FormGroup from "../components/common/FormGroup";
+import { IconEyeToggle } from "../components/icons";
 import { Input } from "../components/input";
 import { Label } from "../components/label";
+import useToggleValue from "../hooks/useToggleValue";
 import LayoutAuthentication from "../layout/LayoutAuthentication";
-import { Checkbox } from "../components/checkbox";
-import { useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 
 const schema = yup.object({
   name: yup.string().required("This field is required"),
@@ -37,10 +38,11 @@ const SignUpPage = () => {
       values
     );
   };
-  const [acceptTerm, setAcceptTerm] = useState(false);
-  const handleToggleTerm = () => {
-    setAcceptTerm(!acceptTerm);
-  };
+  const { value: acceptTerm, handleToggleValue: handleToggleTerm } =
+    useToggleValue();
+  const { value: showPassword, handleToggleValue: handleTogglePassword } =
+    useToggleValue();
+
   return (
     <LayoutAuthentication heading="Sign Up">
       <p className="mb-6 text-xs font-normal text-center lg:text-sm text-text3 lg:mb-8">
@@ -81,14 +83,19 @@ const SignUpPage = () => {
           <Input
             control={control}
             name="password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             placeholder="create a password"
             error={errors.password?.message}
-          ></Input>
+          >
+            <IconEyeToggle
+              open={showPassword}
+              onClick={handleTogglePassword}
+            ></IconEyeToggle>
+          </Input>
         </FormGroup>
-        <div className="flex items-start mb-5 gap-x-5">
+        <div className="flex items-start mb-5 select-none gap-x-5">
           <Checkbox name="term" checked={acceptTerm} onClick={handleToggleTerm}>
-            <p className="flex-1 text-sm text-text2">
+            <p className="flex-1 text-xs lg:text-sm text-text2">
               I agree to the{" "}
               <span className="underline text-secondary">Terms of Use</span> and
               have read and understand the{" "}
