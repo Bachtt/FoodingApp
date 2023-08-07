@@ -53,7 +53,7 @@ const IconEyeToggle = ({ open = false, onClick = () => {} }) => {
   );
 };
 
-IconEyeToggle.PropTypes = {
+IconEyeToggle.propTypes = {
   open: PropTypes.bool,
   onClick: PropTypes.func,
 };

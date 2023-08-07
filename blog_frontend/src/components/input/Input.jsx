@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useController } from "react-hook-form";
 import PropTypes from "prop-types";
 import { withErrorBoundary } from "react-error-boundary";
@@ -22,8 +23,10 @@ const Input = (props) => {
       <input
         id={name}
         type={type}
-        className={`w-full px-6 py-4 text-sm font-medium border  rounded-xl text-text1 placeholder:text-text4 ${
-          error.length > 0 ? "border-error" : "border-strock"
+        className={`w-full px-6 py-4 text-sm font-medium border  rounded-xl  placeholder:text-text4 ${
+          error.length > 0
+            ? "border-error text-error"
+            : "border-strock text-text1"
         } ${children ? "pr-16" : ""}`}
         placeholder={error.length > 0 ? error : placeholder}
         {...rest}
