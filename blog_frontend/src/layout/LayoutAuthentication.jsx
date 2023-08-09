@@ -10,7 +10,7 @@ const LayoutAuthentication = (props) => {
       <Link to="/" className="inline-block mb-5 lg:mb-16">
         <img
           srcSet="./assets/images/logo.png 3x"
-          alt="Fooding App"
+          alt="Fooding-app"
           className="rounded-lg"
         />
       </Link>
